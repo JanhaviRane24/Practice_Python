@@ -54,7 +54,7 @@ print(2 * 5)
 
 #Casting
 #If you want to specify the data type of a variable, this can be done with casting.
-x = str(3)    # x will be '3'
+x = input(3)    # x will be '3'
 y = int(3)    # y will be 3
 z = float(3)  # z will be 3.0
 
@@ -69,3 +69,52 @@ x, y, z = "Orange", "Banana", "Cherry"
 print(x)
 print(y)
 print(z)
+
+#unpack collection
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+print(x)
+print(y)
+print(z)
+
+#output variables
+x = "Python"
+y = "is"
+z = "awesome"
+print(x, y, z)
+
+#Notice the space character after "Python " and "is ", 
+# without them the result would be "Pythonisawesome".
+x = "Python "
+y = "is "
+z = "awesome"
+print(x + y + z)
+
+#global variables
+#Variables that are created outside of a function 
+# (as in all of the examples in the previous pages) are known as global variables.
+
+#Global variables can be used by everyone, both inside of functions and outside.
+
+
+x = "awesome"
+
+def myfunc():
+  print("Python is " + x)
+
+myfunc()
+
+#If you create a variable with the same name inside a function, 
+# this variable will be local, and can only be used inside the function.
+#  The global variable with the same name will remain as it was, 
+# global and with the original value.
+x = "awesome"
+
+def myfunc():
+  x = "fantastic"
+  print("Python is " + x)
+
+myfunc()
+
+print("Python is " + x)
+
