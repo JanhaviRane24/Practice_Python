@@ -1,3 +1,7 @@
+#My learning notes
+
+
+
 n=5
 print(n)
 # output:
