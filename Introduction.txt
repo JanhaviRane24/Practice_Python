@@ -1,0 +1,455 @@
+open cmd terminal type 
+python --version 
+use above command to check python version in your laptop
+
+to use python script
+C:\Users\Your Name>python
+>>> print("Hello, World!")
+to end script  type exit()
+
+What is Python?
+
+Python is a high-level, interpreted, general-purpose programming language.
+ High-level means I don't manage memory manually, interpreted means 
+ code runs line-by-line without a separate compile step, and general-purpose 
+ means it's used for web development, data science, automation, 
+ scripting — not tied to one domain
+
+ Variables, keywords, identifiers — know the distinction:
+
+Variable — a name bound to a value (x = 5)
+
+Keyword — reserved words Python itself uses (if, for, class, def) — 
+can't be used as variable names
+
+Identifier — any name you choose for a variable, function, or class — 
+must start with a letter/underscore, no spaces, case-sensitive
+
+
+
+2. Data Types & 3. Type Conversion
+
+Core types: int, float, str, bool, complex
+
+Type conversion functions: int(), float(), str(), bool() — convert between types.
+
+Likely question: "What's the difference between implicit and explicit type conversion?"
+
+"Implicit conversion happens automatically — like 1 + 2.5 becoming 3.5 because Python automatically promotes int to float. Explicit conversion is when I manually call int(), float(), str() to convert a value myself."
+
+Likely question: "What does bool(0), bool(""), bool([]) return, and why?"
+
+"All return False. Python treats 0, empty strings, and empty collections as 'falsy' by convention — any non-zero number, non-empty string, or non-empty collection is 'truthy'."
+
+4. Operators
+
+Arithmetic, Comparison, Assignment, Logical, Membership (in, not in), Identity (is, is not), Bitwise.
+
+Likely question: "What's the difference between == and is?"
+
+"== checks if two values are equal. is checks if two variables point to the exact same object in memory. Two different lists with identical contents are == but not is."
+
+Likely question: "What's the difference between and/or and &/|?"
+
+"and/or are logical operators, used for boolean logic and short-circuit evaluation. &/| are bitwise operators, operating on individual bits of integers — though they're also used for set operations and Series in pandas."
+
+5. Conditional Statements
+
+if, if-else, elif, nested if.
+
+Nothing tricky here conceptually — just be ready to write one live without hesitating, e.g. FizzBuzz-style logic.
+
+6. Loops
+
+for i in range(5): print(i) — while i <= 5: ... i += 1 Control flow: break (exit loop entirely), continue (skip to next iteration), pass (do nothing, placeholder).
+
+Likely question: "Difference between break and continue?"
+
+"break exits the loop completely. continue skips the rest of the current iteration and moves to the next one, without exiting the loop."
+
+Likely question: "What does range(1, 6) actually produce?"
+
+"A sequence of numbers from 1 up to but not including 6 — so 1, 2, 3, 4, 5. range is memory-efficient because it generates numbers lazily rather than storing a full list."
+
+7. Dictionary Methods
+
+keys(), values(), items(), update(), get(), pop()
+
+Likely question: "Difference between dict['key'] and dict.get('key')?"
+
+"dict['key'] raises a KeyError if the key doesn't exist. dict.get('key') returns None instead (or a default value you specify), so it doesn't crash — safer when you're not sure the key exists."
+
+Likely question: "What does a.update(b) do exactly?"
+
+"It merges dictionary b into a — adding any new keys from b, and overwriting a's existing keys if b has the same key with a different value."
+
+8. Strings — Indexing, Slicing, Methods
+
+upper(), lower(), strip(), split(), join(), find(), replace(), startswith(), endswith(), count()
+
+String slicing: string[start:stop:step]
+
+Practice problems from your notes — be ready to write these live:
+
+python
+# Reverse a string
+s = "hello"
+print(s[::-1])
+
+# Check palindrome
+def is_palindrome(s):
+    return s == s[::-1]
+
+# Count vowels
+def count_vowels(s):
+    return sum(1 for ch in s.lower() if ch in "aeiou")
+
+# Count words
+def count_words(s):
+    return len(s.split())
+
+Likely question: "What's the difference between find() and index()?"
+
+"Both search for a substring. find() returns -1 if not found. index() raises a ValueError if not found. find() is safer when you're not sure the substring exists."
+
+Likely question: "Why are strings immutable in Python?"
+
+"Once created, a string's contents can't be changed in place — any operation like .replace() or concatenation creates a new string object rather than modifying the original. This makes strings hashable (usable as dict keys) and safe to share across code without unexpected side effects."
+
+9. Lists — Mutable, Ordered
+
+Methods: append(), extend(), insert(index, value), remove(value), pop(), reverse(), copy(), sort() del — deletes an entire list (or an item by index).
+
+Practice problems from your notes:
+
+python
+# Reverse a number
+num = 98765
+rev = 0
+while num > 0:
+    rev = rev * 10 + num % 10
+    num = num // 10
+print(rev)
+
+# Find largest/smallest without max()/min()
+nums = [4, 8, 2, 9, 1]
+largest = nums[0]
+for n in nums:
+    if n > largest:
+        largest = n
+
+# Remove duplicates
+nums = [1, 2, 2, 3, 3, 3]
+unique = list(set(nums))  # note: doesn't preserve order
+# order-preserving version:
+unique_ordered = list(dict.fromkeys(nums))
+
+Likely question: "Difference between append() and extend()?"
+
+"append() adds a single item to the end, even if that item is a list — it becomes one nested element. extend() takes an iterable and adds each of its elements individually to the end."
+
+python
+a = [1, 2]
+a.append([3, 4])   # → [1, 2, [3, 4]]
+a2 = [1, 2]
+a2.extend([3, 4])  # → [1, 2, 3, 4]
+
+Likely question: "What does remove(20) do if there are multiple 20s in the list?"
+
+"It removes only the first occurrence, not all of them."
+
+10. Tuples — Immutable
+
+Support only count() and index() — since you can't modify a tuple, most list-style methods don't apply.
+
+Likely question: "Why use a tuple instead of a list?"
+
+"Tuples are immutable, so they're faster and safer when the data shouldn't change — like coordinates, or fixed configuration values. They're also hashable, so they can be used as dictionary keys, unlike lists."
+
+Packing/unpacking:
+
+python
+point = (3, 4)          # packing
+x, y = point             # unpacking
+11. Sets — Unordered, No Duplicates, Mutable
+
+Methods: add(), remove(), union(), intersection(), difference()
+
+Likely question: "Why is a set fast for searching/membership checks compared to a list?"
+
+"Sets are implemented using a hash table internally, so checking x in my_set is roughly constant time, O(1). A list has to check every element one by one, O(n)."
+
+Likely question: "How would you remove duplicates from a list using a set?"
+
+python
+nums = [1, 2, 2, 3]
+unique = list(set(nums))
+
+"But be aware — converting to a set loses the original order, since sets are unordered."
+
+12. Functions
+python
+def function_name(parameters):
+    # code
+    return value
+
+Parameters vs Arguments:
+
+"Parameters are the variable names listed in the function definition. Arguments are the actual values you pass in when calling the function."
+
+*args and **kwargs:
+
+"*args collects any number of extra positional arguments into a tuple. **kwargs collects any number of extra keyword arguments into a dictionary. Both let a function accept a flexible, unknown number of inputs."
+
+python
+def demo(*args, **kwargs):
+    print(args)     # tuple of positional args
+    print(kwargs)   # dict of keyword args
+
+demo(1, 2, name="Pavan")
+# args = (1, 2)
+# kwargs = {'name': 'Pavan'}
+
+Lambda functions: anonymous, single-expression functions.
+
+python
+square = lambda x: x * x
+
+Likely question: "When would you use a lambda instead of a regular function?"
+
+"For short, throwaway functions — often passed directly as an argument to something like sorted(), map(), or filter(), where defining a full named function would be overkill."
+
+Return values: "A function without an explicit return returns None by default."
+
+13. Exception Handling
+python
+try:
+    # risky code
+except SpecificError:
+    # handle it
+else:
+    # runs only if no exception occurred
+finally:
+    # always runs, regardless of exception or not
+
+Common exception types to know: ZeroDivisionError, ValueError, IndexError, TypeError, KeyError
+
+Likely question: "What's the difference between except: (bare) and except SpecificError:?"
+
+"A bare except: catches every possible exception, including ones you didn't anticipate, which can hide real bugs. Catching a specific exception type is better practice — you only handle what you expect, and let unexpected errors surface properly."
+
+Likely question: "What's the difference between else and finally in a try block?"
+
+"else only runs if the try block succeeded with no exception. finally always runs no matter what — exception or not — typically used for cleanup like closing a file or a database connection."
+
+Custom exceptions:
+
+python
+class InsufficientBalanceError(Exception):
+    pass
+
+def withdraw(balance, amount):
+    if amount > balance:
+        raise InsufficientBalanceError("Not enough balance")
+
+"You create custom exceptions by making a class that inherits from Exception, then use raise to trigger it — useful when you want a specific, descriptive error type for your own application logic, rather than relying on generic built-in exceptions."
+
+14. File Handling
+python
+file = open("filename", "mode")
+file.read()
+file.readline()   # reads one line
+file.close()
+file.write("Hello Python")
+
+# Safer approach — closes automatically
+with open("demo.txt", "r") as file:
+    print(file.read())
+
+import os
+os.remove("demo.txt")   # delete a file
+
+Modes: r (read), w (write, overwrites), a (append), r+/w+ (read+write)
+
+Likely question: "Why is with open(...) preferred over manually calling open()/close()?"
+
+"with automatically closes the file when the block ends, even if an exception occurs inside it — with manual open()/close(), forgetting to call close(), or an error happening before you reach it, leaves the file handle open, which can leak resources."
+
+15. Modules and Packages
+python
+import math
+from random import randint
+
+Built-in modules: math, random, datetime, os
+
+Likely question: "Difference between a module and a package?"
+
+"A module is a single .py file containing functions/classes. A package is a folder containing multiple modules, usually with an __init__.py file marking it as a package. Third-party packages, like requests or django, are installed via pip install."
+
+16. Object-Oriented Programming (OOP) — Likely the Most-Asked Section
+
+Class vs Object:
+
+"A class is a blueprint for creating objects — it defines what attributes and methods an object of that type will have. An object is an actual instance created from that class."
+
+python
+class Student:
+    def display(self):
+        print("Welcome to Python")
+
+obj = Student()   # object creation
+obj.display()
+
+self:
+
+"self refers to the current object — the specific instance the method is being called on. It's how a method knows which object's data to work with, since a class can have many objects, each with its own data."
+
+Constructor (__init__):
+
+"A constructor is a special method that runs automatically the moment an object is created. It's typically used to initialize the object's starting attributes."
+
+python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+s = Student("Pavan")
+The Four Pillars — know these cold, they get asked constantly
+
+1. Inheritance — one class acquires the properties and methods of another.
+
+python
+class Animal:
+    def speak(self):
+        print("Some sound")
+
+class Dog(Animal):
+    def speak(self):
+        print("Bark")
+
+super() — used to access the parent class's methods from inside a child class.
+
+python
+class Dog(Animal):
+    def speak(self):
+        super().speak()
+        print("Bark")
+
+2. Polymorphism — one interface, many forms. Achieved through method overriding.
+
+"Different classes can define a method with the same name, but each implements it differently. When you call that method on an object, Python runs the version specific to that object's actual class."
+
+3. Encapsulation — restricting access outside the class; wrapping data and methods into a single unit and controlling access to that data.
+
+python
+class Account:
+    def __init__(self):
+        self._protected = "can use by subclass/object"
+        self.__private = "only functions in the class"
+_single_underscore → protected (convention only — can still technically be accessed, but signals "don't touch this from outside")
+__double_underscore → private (Python name-mangles it, making it much harder to access directly from outside)
+
+4. Abstraction — hides implementation details, exposes only the necessary functionality.
+
+"The user of a class doesn't need to know how a method works internally — just what it does. For example, you call .sort() on a list without knowing the sorting algorithm underneath."
+
+Likely question: "Difference between Abstraction and Encapsulation, since they sound similar?"
+
+"Encapsulation is about restricting access to data — using private/protected variables. Abstraction is about hiding complexity — showing only what's necessary and hiding the internal implementation, regardless of access level."
+
+Likely question: "Difference between method overriding and method overloading?"
+
+"Overriding: a subclass redefines a method that already exists in its parent class, with the same name and signature. Overloading (which Python doesn't support natively the way Java does) means multiple methods with the same name but different parameters — Python instead handles this with default arguments or *args."
+
+17. Python's Memory Management
+
+Reference counting: Python keeps track of how many variables reference a given object. When that count hits zero, the memory is freed.
+
+Garbage Collector (GC): Handles a specific weakness of reference counting — circular references (two objects referencing each other, so their count never naturally reaches zero). The garbage collector periodically detects and cleans these up.
+
+Namespaces: Built-in, Global, Local — determine variable scope and lookup order.
+
+Likely question: "Why isn't reference counting alone enough?"
+
+"If object A references object B, and B references A, their reference counts never drop to zero even if nothing else in the program uses them — that's a circular reference. Python's separate garbage collector specifically detects and cleans up these cycles that reference counting alone can't catch."
+
+18. Iterators and Generators
+
+iter(), next(), yield
+
+Likely question: "What's the difference between an iterator and a generator?"
+
+"A generator is a simpler way to create an iterator — using a function with yield instead of manually implementing __iter__ and __next__. Every generator is an iterator, but not every iterator is a generator."
+
+Likely question: "What does yield actually do, differently from return?"
+
+"return exits the function completely and gives back one value. yield pauses the function, remembers exactly where it left off, and gives back one value at a time — the next call to next() resumes right after the yield. This means generators produce values lazily, one at a time, instead of building the whole result in memory at once."
+
+python
+def count_up_to(n):
+    i = 1
+    while i <= n:
+        yield i
+        i += 1
+
+for num in count_up_to(5):
+    print(num)
+19. List Comprehension
+python
+numbers = [i for i in range(1, 6)]
+print(numbers)  # [1, 2, 3, 4, 5]
+
+Likely question: "Why use list comprehension instead of a normal for loop?"
+
+"It's more concise and often faster, since it's optimized internally in CPython. For simple transformations or filters, it reads more clearly in one line than a multi-line loop."
+
+Be ready to write one live with a condition:
+
+python
+evens = [i for i in range(1, 20) if i % 2 == 0]
+20. Decorators (Basic)
+
+"Functions are objects in Python — they can be passed around, assigned to variables, and passed as arguments to other functions. A decorator is a function that takes another function as input and extends or modifies its behavior without changing its actual code."
+
+python
+def my_decorator(func):
+    def wrapper():
+        print("Before the function runs")
+        func()
+        print("After the function runs")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello")
+
+say_hello()
+
+Likely question: "Where have you actually seen a decorator used?" This connects directly to your project — a strong, honest answer:
+
+"In my DRF project — @api_view(['GET', 'POST']) and @permission_classes([IsAuthenticated]) are both decorators. They wrap my view function to add behavior — restricting HTTP methods, or checking authentication — before my actual function code runs."
+
+21. Regular Expressions (re)
+
+match() — checks for a match only at the beginning of the string. search() — checks for a match anywhere in the string, returns the first one. findall() — returns all matches in the string as a list.
+
+python
+import re
+re.search(r"\d+", "My number is 12345")   # finds "12345"
+re.findall(r"\d+", "a1 b22 c333")          # ['1', '22', '333']
+
+Likely question: "Difference between match() and search()?"
+
+"match() only checks the very start of the string — if the pattern isn't right at the beginning, it returns None, even if it exists further in. search() scans the entire string and returns the first match wherever it occurs."
+
+22. Important Built-in Functions
+
+len(), range(), sum(), max(), min(), sorted(), all()
+
+Likely question: "Difference between sort() and sorted()?"
+
+"list.sort() modifies the list in place and returns None. sorted(list) returns a new sorted list, leaving the original unchanged — and it works on any iterable, not just lists."
+
+Likely question: "What does all() do?"
+
+"Returns True only if every element in an iterable is truthy — useful for checking a condition holds across an entire collection, e.g. all(x > 0 for x in nums)."
