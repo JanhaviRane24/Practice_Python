@@ -7,6 +7,8 @@ C:\Users\Your Name>python
 >>> print("Hello, World!")
 to end script  type exit()
 
+#basic python fundamentals
+
 What is Python?
 
 Python is a high-level, interpreted, general-purpose programming language.
