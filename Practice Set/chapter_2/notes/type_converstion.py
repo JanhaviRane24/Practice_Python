@@ -1,11 +1,13 @@
 # Type Conversion (Explicit Conversion)
+# type() function is used to find the data type of a given variable in python.
+
 
 # int()
 value = "100"
 converted_int = int(value)
 print("\nString to Integer:", converted_int)
 print(type(converted_int))
-
+ # class <int>
 # float()
 value = "25.5"
 converted_float = float(value)
