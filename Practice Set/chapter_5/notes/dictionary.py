@@ -1,5 +1,66 @@
 # dictionary.py
 
+# Dictionary is a collection of keys-value pairs.
+
+# A dictionary is faster because it uses hashing, which allows Python to find values directly instead of searching one by one.
+# Dictionaries use hashing internally in Python.
+# A dictionary stores data as key-value pairs.
+
+# Example:
+
+# d = {
+#     "name": "Rahul",
+#     "age": 20
+# }
+
+# Python calculates the hash of the keys:
+
+# hash("name")
+# hash("age")
+
+# The hash helps Python find the value quickly.
+
+# print(d["name"])
+
+# Python:
+
+# Calculates hash of "name".
+# Finds the location of that key.
+# Returns "Rahul".
+
+# Dictionary keys must be hashable.
+
+# Valid:
+
+# d = {
+#     "name": "Rahul",
+#     1: "one",
+#     (1, 2): "tuple"
+# }
+
+
+# Invalid:
+
+# d = {
+#     [1, 2]: "list"
+# }
+
+# because lists are mutable.
+
+# Properties Of Python Dictionaries
+# It is unordered.
+# It is mutable.
+# It is indexed.
+# Cannot contain duplicate keys.
+
+# Dictionary Methods
+# Consider the following dictionary
+# a={"name":"harry","from":"india","marks":[92,98,96]}
+# a.items(): Returns a list of (key,value) tuples.
+# a.keys(): Returns a list containing dictionary's keys.
+# a.update({"friends":}): Updates the dictionary with supplied key-value pairs.
+# a.get("name"): Returns the value of the specified keys
+
 student = {
     "name": "Rahul",
     "age": 21,

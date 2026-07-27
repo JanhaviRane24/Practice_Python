@@ -45,6 +45,7 @@ print("my weight is :",a)
 #my weight is : 45
 
 w=input("enter a value: ")
+#This function allows the user to take input from the keyboard as a string.
 #we use input function to take values from user
 print(w)
 #enter a value: 4
