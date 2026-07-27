@@ -1,4 +1,22 @@
-# if_else.py
+# # if_else.py
+# If else and elif statements are a multiway decision taken by our program due to certain conditions in our code.
+
+# Syntax:
+# if(condition1): # if condition1 is True
+# print("yes")
+# elif(condition2): # if condition2 is True
+# print("no")
+# else:             
+# # otherwise
+# print("maybe")
+
+# Elif Clause
+# elif in python means [else if]. An if statements can be chained together with a lot of these elif statements
+# followed by an else statement
+
+# Important Notes:
+# 1. There can be any number of elif statements.
+# 2. Last else is executed only if all the conditions inside elifs fail
 
 age = int(input("Enter your age: "))
 
