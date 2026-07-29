@@ -1,10 +1,10 @@
-Reverse string
-Reverse number
-Fibonacci
-Prime
-Palindrome
-Factorial
-Character frequency using dictionary
-Remove duplicates
-Second largest
-Count vowels
+Reverse string-done
+Reverse number-done
+Fibonacci-done
+Prime-done
+Palindrome-done
+Factorial-done
+Character frequency using dictionary-done
+Remove duplicates-done
+Second largest-done
+Count vowels-done
