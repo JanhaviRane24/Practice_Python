@@ -1,0 +1,5 @@
+names=("janu","sanu","manu")
+it=iter(names)
+print(next(it))
+print(next(it))
+print(next(it))
