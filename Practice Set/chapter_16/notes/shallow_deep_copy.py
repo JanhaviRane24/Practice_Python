@@ -8,7 +8,18 @@
 # Shallow Copy stores the copy of the original object and points the references to the objects.	Deep copy stores the copy of the original object and recursively copies the objects as well.
 # A shallow copy is faster.	Deep copy is comparatively slower.
 # Shallow Copy vs Deep Copy (Short)
+import copy
 
+original = [1, 2, [3, 4]]
+shallow = copy.copy(original)
+deep = copy.deepcopy(original)
+
+shallow[0] = 99          # outer level change
+shallow[2].append(5)     # nested/inner level change
+
+print(original)  # [1, 2, [3, 4, 5]]  <- only inner change leaked through
+print(shallow)    # [99, 2, [3, 4, 5]]
+print(deep)       # [1, 2, [3, 4]]
 # Import the copy module:
 
 import copy

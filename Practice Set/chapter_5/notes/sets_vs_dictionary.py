@@ -1,4 +1,5 @@
-# No, a set is not slower than a dictionary. In most cases, sets and dictionaries have similar speed because both use hash tables internally.
+# No, a set is not slower than a dictionary. 
+# In most cases, sets and dictionaries have similar speed because both use hash tables internally.
 
 # # Comparison:
 # | Operation    | Set          | Dictionary      |
